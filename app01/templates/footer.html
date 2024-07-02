@@ -1,4 +1,20 @@
 <!-- footer.html -->
-<div class="footer" style="position: fixed; bottom: 0; width: 100%; text-align: center; color: #999; font-size: 14px; padding: 10px 0;">
+<style>
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+        padding: 10px 0;
+        pointer-events: none; /* 添加 pointer-events: none; 让页脚不拦截鼠标事件 */
+    }
+    .footer p {
+        pointer-events: auto; /* 添加 pointer-events: auto; 让段落内容可以接收鼠标事件 */
+    }
+</style>
+
+<div class="footer">
     <p>© 2024 - JACL. All rights reserved.</p>
 </div>

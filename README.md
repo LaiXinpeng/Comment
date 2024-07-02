@@ -24,9 +24,11 @@
 ```shell
 git clone https://github.com/LaiXinpeng/machine-learning.git
 cd machine-learning
+git lfs install
+git lfs pull
 ```
 
-2. 安装所需依赖：
+1. 安装所需依赖：
 ```shell
 pip install -r requirements.txt
 ```

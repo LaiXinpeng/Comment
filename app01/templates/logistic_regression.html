@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中风风险预测</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/linear.css' %}">
+</head>
+
+<body>
+<div class="container">
+    <h2>中风风险预测</h2>
+    <form action="/app01/mllogical/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="sex">性别</label>
+            <select id="sex" class="form-select" name="sex" required>
+                <option value="">请选择性别</option>
+                <option value="0">男性</option>
+                <option value="1">女性</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="age">年龄</label>
+            <input id="age" class="form-input" type="number" name="age" placeholder="请输入你的年龄" required/>
+        </div>
+        <div class="form-group">
+            <label for="high_press">是否患有高血压？</label>
+            <select id="high_press" class="form-select" name="high_press" required>
+                <option value="">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="heart_disease">是否有心脏病？</label>
+            <select id="heart_disease" class="form-select" name="heart_disease" required>
+                <option value="">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="marriage">是否已婚？</label>
+            <select id="marriage" class="form-select" name="marriage" required>
+                <option value="">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="work_type">工作类型</label>
+            <select id="work_type" class="form-select" name="work_type" required>
+                <option value="">请选择</option>
+                <option value="0">学生</option>
+                <option value="1">政府工作人员</option>
+                <option value="2">无业</option>
+                <option value="3">公司上班</option>
+                <option value="4">自己创业或自行经营业务</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="live">居住类型</label>
+            <select id="live" class="form-select" name="live" required>
+                <option value="">请选择</option>
+                <option value="0">乡村城镇</option>
+                <option value="1">城市</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="level">平均血糖水平</label>
+            <input id="level" class="form-input" type="number" step="0.01" name="level" placeholder="请输入平均血糖水平" required/>
+        </div>
+        <div class="form-group">
+            <label for="bmi">BMI指数</label>
+            <input id="bmi" class="form-input" type="number" step="0.01" name="bmi" placeholder="请输入BMI指数" required/>
+        </div>
+        <div class="form-group">
+            <label for="smoker">吸烟情况</label>
+            <select id="smoker" class="form-select" name="smoker" required>
+                <option value="">请选择</option>
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <div class="result">
+        {% if stroke_probability %}
+            <h2>中风概率为：{{ stroke_probability.0 }}</h2>
+        {% endif %}
+        {% if print_res %}
+            <h2>中风风险：{{ print_res }}</h2>
+        {% endif %}
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

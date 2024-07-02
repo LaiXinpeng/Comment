@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于YOLOv8的视频目标检测</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>基于深度学习算法(YOLOv8)的视频目标检测</h1>
+
+    <form id="videoUploadForm" name="videoUploadForm" method="post" enctype="multipart/form-data" action="/app01/video_upload/">
+        <label class="input_font">上传视频</label>
+        <input type="file" id="videoFile" name="videoFile" required/>
+        <button type="submit" class="btnsubmit">上传</button>
+        {% if process_url %}
+            <video class="imgstyle" id="myVideo" controls>
+                <source src="{{ process_url }}" type="video/mp4">
+            </video>
+        {% endif %}
+        {% if process_url2 %}
+            <video class="imgstyle" id="myVideo2" controls>
+                <source src="{{ process_url2 }}" type="video/mp4">
+            </video>
+        {% endif %}
+    </form>
+    {% if process_url %}
+    <form id="myForm" method="post" action="/app01/video_detect/">
+        <input type="text" name="path" value="{{ process_url }}" readonly hidden/>
+        <button type="submit" class="btnsubmit">查看检测结果</button>
+    </form>
+    {% endif %}
+</body>
+</html>

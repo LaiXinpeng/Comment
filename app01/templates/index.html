@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="基于Django的人工智能技术应用案例，包括线性回归、朴素贝叶斯、逻辑回归、机器学习和深度学习图像分类、目标检测和图像分割。">
+    <meta name="keywords" content="Django, 人工智能, 机器学习, 深度学习, 线性回归, 朴素贝叶斯, 逻辑回归, 图像分类, 目标检测, 图像分割">
+    <title>基于Django的人工智能技术应用案例</title>
+    {% load static %}
+    <!-- 使用Bootstrap样式 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 自定义全局样式 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>机器学习综合案例</h1>
+        <ul>
+            <li>
+                <a href="/app01/textcategory/">基于朴素贝叶斯算法的文本分类</a>
+                <span class="tooltip">使用Django框架完成中文文本分类</span>
+            </li>
+            <li>
+                <a href="/app01/logical/">基于Logical Regression的中风风险概率预测</a>
+                <span class="tooltip">通过线性回归模型预测风险概率</span>
+            </li>
+            <li>
+                <a href="/app01/pressregression/">基于Linear Regression的实验室输出电力预测</a>
+                <span class="tooltip">利用Django预测实验室输出功率</span>
+            </li>
+            <li>
+                <a href="/app01/mlclassification/">机器学习图像分类(农作物)</a>
+                <span class="tooltip">采用SVM算法进行水果图像分类</span>
+            </li>
+            <li>
+                <a href="/app01/dlclassification/">深度学习图像分类(水果)</a>
+                <span class="tooltip">使用深度学习算法进行准确的水果分类</span>
+            </li>
+            <li>
+                <a href="/app01/dldetect/">深度学习目标检测(图片)</a>
+                <span class="tooltip">部署yolov8算法进行图片目标检测</span>
+            </li>
+            <li>
+                <a href="/app01/video_upload/">深度学习目标检测(视频)</a>
+                <span class="tooltip">应用yolov8算法进行视频中的目标检测</span>
+            </li>
+            <li>
+                <a href="/app01/xlclassification/">图像分割(细胞)</a>
+                <span class="tooltip">实现图像分割功能的案例</span>
+            </li>
+            <li>
+                <a href="/app01/face/">人脸识别</a>
+                <span class="tooltip">使用Django实现人脸识别技术</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 署名 -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

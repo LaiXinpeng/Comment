@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验室输出电力预测</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f5f5f5, #e0e0e0); /* 渐变背景 */
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .ml-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .ml-container form {
+            margin-bottom: 20px;
+        }
+        .ml-container h2 {
+            font-size: 28px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .ml-container h3 {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .ml-container .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .ml-container .form-group label {
+            display: block;
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+        .ml-container .form-group input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .ml-container button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        .ml-container button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        @media screen and (max-width: 600px) {
+            .ml-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ml-container">
+        <h2>实验室输出电力预测</h2>
+        <form action="/app01/pressmlregression/" method="post">
+            <div class="form-group">
+                <label for="temperature">温度</label>
+                <input id="temperature" type="number" name="temperature" placeholder="例如：25" required/>
+            </div>
+            <div class="form-group">
+                <label for="pressure">压力</label>
+                <input id="pressure" type="number" name="pressure" placeholder="例如：1013" required/>
+            </div>
+            <div class="form-group">
+                <label for="humidity">湿度</label>
+                <input id="humidity" type="number" name="humidity" placeholder="例如：50" required/>
+            </div>
+            <div class="form-group">
+                <label for="pressure_strength">压强</label>
+                <input id="pressure_strength" type="number" name="pressure_strength" placeholder="例如：70" required/>
+            </div>
+            <button type="submit">提交</button>
+        </form>
+        {% if print_res %}
+            <h2>实验室输出电力为：{{ print_res }}</h2>
+        {% endif %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

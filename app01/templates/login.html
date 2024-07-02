@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于Django的人工智能技术应用案例</title>
+    {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+   <script>
+       // JavaScript 函数：点击注册按钮时跳转到注册页面
+       function goToRegisterPage() {
+           window.location.href = "/app01/signup_view";  // 修改为实际的注册页面 URL
+       }
+   </script>
+</head>
+<body>
+  <div class="loginBox">
+    <h2>欢迎登录</h2>
+
+    <form action="/app01/user_login/" method="post">
+      <div class="item">
+        <input type="text" name="username" required>
+        <label for="username">用户名：</label>
+      </div>
+      <div class="item">
+        <input type="password" name="password" required>
+        <label for="password">密码：</label>
+      </div>
+      <div class="btn-container">
+        <button type="submit" class="btn">立即登录
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <button type="button" class="btn" onclick="goToRegisterPage()">注册账号
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </form>
+  </div>
+  {% include 'footer.html' %}
+</body>
+</html>

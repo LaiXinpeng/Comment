@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .btnsubmit {
+            background-color: #007bff; /* Blue */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Face Detection</h1>
+
+<!-- 表单提交按钮 -->
+<form id="picuploadForm" name="picuploadForm" method="post" enctype="multipart/form-data" action="/app01/open_face/">
+    {% csrf_token %}
+    <button type="submit" class="btnsubmit">Start Face Detection</button>
+</form>
+
+<!-- JavaScript 按键监听器 -->
+<script>
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'q' || event.key === 'Q') {
+            event.preventDefault(); // 阻止默认行为（避免触发其他按键效果）
+            fetch('/app01/open_face/', {
+                method: 'POST',
+                body: JSON.stringify({ action: 'exit' }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Exit command received.');
+                    // 在这里可以添加处理退出的逻辑，例如显示退出消息
+                } else {
+                    console.error('Exit command failed.');
+                    // 可以根据需要处理失败情况
+                }
+            }).catch(error => {
+                console.error('Error executing exit command:', error);
+            });
+        }
+    });
+</script>
+    {% include 'footer.html' %}
+</body>
+</html>

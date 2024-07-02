@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于YOLOv8的目标检测</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+</head>
+<body>
+    <h1>基于深度学习算法(YOLOv8)的图片目标检测</h1>
+    <form id="picuploadForm" name="picuploadForm" method="post" enctype="multipart/form-data" action="/app01/dldetect/">
+        {% csrf_token %}
+        <label class="input_font">上传图片</label>
+        <input type="file" id="picFile" name="picFile" required/>
+        <button type="submit" class="btnsubmit">上传</button>
+        {% if process_url %}
+            <img class="imgstyle" src="{% static process_url %}"/><br/>
+        {% endif %}
+        {% if print_res %}
+            <img class="imgstyle" src="{% static print_res %}"/><br/>
+        {% endif %}
+        {% csrf_token %}
+
+    </form>
+    {% if process_url %}
+        <form id="myForm" method="post" action="/app01/detect/">
+            <input type="text" name="path" value="{% static process_url %}" readonly hidden/>
+            <button type="submit" class="btnsubmit">查看检测结果</button>
+        </form>
+    {% endif %}
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signup</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script>
+        // JavaScript 函数：点击返回登录按钮时跳转到登录页面
+        function goToLoginPage() {
+            window.location.href = "/app01/user_login/";  // 修改为实际的登录页面 URL
+        }
+    </script>
+</head>
+<body>
+    <div class="loginBox">
+        <h2>用户注册</h2>
+
+        <form action="/app01/signup_view/" method="post">
+            <div class="item">
+                <input type="text" id="username" name="username" required>
+                <label for="username">用户名：</label>
+            </div>
+
+            <div class="item">
+                <input type="password" id="password" name="password" required>
+                <label for="password">密码：</label>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn">立即注册
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button type="button" class="btn" onclick="goToLoginPage()">返回登录
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于NaiveBayes中文文本分析</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffa500;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #ff7f00;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>基于NaiveBayes中文文本分析</h2>
+        <p>分类标签：民生故事;文化;娱乐;体育;财经;房产;汽车;教育;科技;军事;旅游;国际;股票;农业;电竞游戏</p>
+        <form action="/app01/textcategory/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control" id="review" name="review" rows="5" placeholder="请输入需要分析的文本..." required>{{ review }}</textarea>
+            </div>
+            <button class="btn" type="submit">提交</button>
+        </form>
+        {% if emotion %}
+        <div class="result">
+            <strong>分析结果：{{ emotion }}</strong>
+        </div>
+        {% endif %}
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
